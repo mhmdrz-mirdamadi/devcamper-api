@@ -4,8 +4,7 @@ const geocoder = require('../utils/geocoder');
 
 const BootcampSchema = new mongoose.Schema(
     {
-        name:
-        {
+        name: {
             type: String,
             required: [true, 'Please add a name'],
             unique: true,
@@ -13,14 +12,12 @@ const BootcampSchema = new mongoose.Schema(
             maxlenght: [50, 'Name can not be more than 50 characters']
         },
         slug: String,
-        description:
-        {
+        description: {
             type: String,
             required: [true, 'Please add a descreption'],
             maxlenght: [500, 'Description can not be more than 500 characters']
         },
-        website:
-        {
+        website: {
             type: String,
             match:
                 [
@@ -28,13 +25,11 @@ const BootcampSchema = new mongoose.Schema(
                     'Please use a valid URL with HTTP or HTTPS'
                 ]
         },
-        phone:
-        {
+        phone: {
             type: String,
             maxlength: [20, 'Phone number can not be longer than 20 characters']
         },
-        email:
-        {
+        email: {
             type: String,
             match:
                 [
@@ -42,22 +37,18 @@ const BootcampSchema = new mongoose.Schema(
                     'Please add a valid email'
                 ]
         },
-        address:
-        {
+        address: {
             type: String,
             required: [true, 'Please add an address']
         },
-        location:
-        {
+        location: {
             // GeoJSON Point
-            type:
-            {
+            type: {
                 type: String,
                 enum: ['Point'],
                 required: false
             },
-            coordinates:
-            {
+            coordinates: {
                 type: [Number],
                 required: false,
                 index: '2dsphere'
@@ -69,8 +60,7 @@ const BootcampSchema = new mongoose.Schema(
             zipcode: String,
             country: String
         },
-        careers:
-        {
+        careers: {
             // Array of strings
             type: [String],
             required: true,
@@ -84,40 +74,33 @@ const BootcampSchema = new mongoose.Schema(
                     'Other'
                 ]
         },
-        averageRating:
-        {
+        averageRating: {
             type: Number,
             min: [1, 'Rating must be at least 1'],
             max: [10, 'Rating can not be more than 10']
         },
         averageCost: Number,
-        photo:
-        {
+        photo: {
             type: String,
             default: 'no-photo.jpg'
         },
-        housing:
-        {
+        housing: {
             type: Boolean,
             default: false
         },
-        jobAssistance:
-        {
+        jobAssistance: {
             type: Boolean,
             default: false
         },
-        jobGuarantee:
-        {
+        jobGuarantee: {
             type: Boolean,
             default: false
         },
-        acceptGi:
-        {
+        acceptGi: {
             type: Boolean,
             default: false
         },
-        createdAt:
-        {
+        createdAt: {
             type: Date,
             default: Date.now
         }
