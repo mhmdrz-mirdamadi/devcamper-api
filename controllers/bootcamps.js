@@ -7,6 +7,7 @@ const Bootcamp = require('../models/Bootcamp');
 // @route       GET /api/v1/bootcamps
 // @access      Public
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
+    let query;
 
     // Copy req.query
     const reqQuey = { ...req.query };
@@ -24,7 +25,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => `$${match}`);
 
     // Finding resource
-    let query = Bootcamp.find(JSON.parse(queryStr));
+    query = Bootcamp.find(JSON.parse(queryStr));
 
     // Select Fields
     if (req.query.select) {
