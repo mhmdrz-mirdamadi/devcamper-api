@@ -23,7 +23,8 @@ router
         path: 'bootcamp',
         select: 'name description'
     }),
-        getCourses)
+        getCourses
+    )
     .post(protect, authorize('publisher', 'admin'), addCourse);
 
 router
